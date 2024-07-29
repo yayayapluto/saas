@@ -39,9 +39,10 @@ function generateDetail() {
   } ${today.getFullYear()}`;
 
   const output = `
-==========================================
-              Tugas (${tanggalHariIni})
-==========================================
+===========================
+ Tugas (${tanggalHariIni})
+ #TugasSekolah
+===========================
 Judul Tugas        : ${title}
 Mata Pelajaran     : ${mapel}
 Jenis Tugas        : ${jenis}
