@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Tugas Generator</title>
+    <title>Detail Tugas dan Pengumuman Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <div class="container mx-auto p-4">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <!-- Tugas Generator -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
             <h1 class="text-2xl font-bold mb-4">Detail Tugas Generator</h1>
             <form id="taskForm" class="space-y-4">
                 <div>
@@ -70,9 +71,112 @@
                     Text</button>
             </div>
         </div>
+
+        <!-- Pengumuman Generator -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-4">Pengumuman Generator</h1>
+            <form id="announcementForm" class="space-y-4">
+                <div>
+                    <label for="ann_title" class="block text-sm font-medium text-gray-700">Judul Pengumuman</label>
+                    <input type="text" id="ann_title"
+                        class="mt-1 py-2 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div>
+                    <label for="ann_detail" class="block text-sm font-medium text-gray-700">Detail Pengumuman</label>
+                    <textarea id="ann_detail"
+                        class="mt-1 py-2 block w-full h-40 border-gray-300 rounded-md shadow-sm"></textarea>
+                </div>
+                <button type="button" onclick="generateAnnouncement()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700">Generate</button>
+            </form>
+
+            <div id="ann_output" class="mt-8 p-4 bg-gray-50 rounded-lg shadow-lg hidden">
+                <h2 class="text-lg font-bold mb-2">Teks Pengumuman</h2>
+                <pre id="ann_outputText" class="whitespace-pre-wrap"></pre>
+                <button onclick="copyAnnouncementText()"
+                    class="bg-green-500 text-white px-4 py-2 mt-4 rounded-md shadow-md hover:bg-green-700">Copy
+                    Text</button>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function formatDate() {
+            const dateInput = document.getElementById("due");
+            const dateValue = dateInput.value;
+
+            if (dateValue) {
+                const [year, month, day] = dateValue.split("-");
+                const formattedDate = `${day}-${month}-${year}`;
+                dateInput.dataset.formatted = formattedDate;
+            }
+        }
+
+        function generateDetail() {
+            const title = document.getElementById("title").value;
+            const mapel = document.getElementById("mapel").value;
+            const jenis = document.getElementById("jenis").value;
+            const due = document.getElementById("due").dataset.formatted || document.getElementById("due").value;
+            const detail = document.getElementById("detail").value;
+            const action_due = document.getElementById("action_due").value;
+
+            const today = new Date();
+            const bulanIndonesia = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const tanggalHariIni = `${today.getDate()} ${bulanIndonesia[today.getMonth()]} ${today.getFullYear()}`;
+
+            const output = `
+            ===========================
+             Tugas (${tanggalHariIni})
+             #TugasSekolah
+            ===========================
+            Judul Tugas        : ${title}
+            Mata Pelajaran     : ${mapel}
+            Jenis Tugas        : ${jenis}
+            Deadline           : ${due}
+            Detail Tugas       : ${detail}
+            Minggu depan harus : ${action_due}
+            ==========================================
+            `;
+
+            document.getElementById("outputText").textContent = output;
+            document.getElementById("output").classList.remove("hidden");
+        }
+
+        function copyText() {
+            const text = document.getElementById("outputText").textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Text copied to clipboard");
+            });
+        }
+
+        function generateAnnouncement() {
+            const ann_title = document.getElementById("ann_title").value;
+            const ann_detail = document.getElementById("ann_detail").value;
+
+            const today = new Date();
+            const bulanIndonesia = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const tanggalHariIni = `${today.getDate()} ${bulanIndonesia[today.getMonth()]} ${today.getFullYear()}`;
+
+            const ann_output = `
+            ===========================
+             Pengumuman (${tanggalHariIni})
+            ===========================
+            Judul Pengumuman   : ${ann_title}
+            Detail Pengumuman  : ${ann_detail}
+            ==========================================
+            `;
+
+            document.getElementById("ann_outputText").textContent = ann_output;
+            document.getElementById("ann_output").classList.remove("hidden");
+        }
+
+        function copyAnnouncementText() {
+            const text = document.getElementById("ann_outputText").textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Text copied to clipboard");
+            });
+        }
+    </script>
 </body>
 
 </html>
