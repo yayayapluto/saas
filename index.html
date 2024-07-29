@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Tugas Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto p-4">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-4">Detail Tugas Generator</h1>
+            <form id="taskForm" class="space-y-4">
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700">Judul Tugas</label>
+                    <input type="text" id="title" class="mt-1 py-2 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div>
+                    <label for="mapel" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+                    <select id="mapel" class="mt-1 py-2 block w-full border-gray-300 rounded-md shadow-sm">
+                        <option value="PG">PG</option>
+                        <option value="PAI">PAI</option>
+                        <option value="P.Pancasila">P.Pancasila</option>
+                        <option value="PWD">PWD</option>
+                        <option value="Matematika">Matematika</option>
+                        <option value="B.Indonesia">B.Indonesia</option>
+                        <option value="B.Jepang">B.Jepang</option>
+                        <option value="PKK">PKK</option>
+                        <option value="PBO">PBO</option>
+                        <option value="PJOK">PJOK</option>
+                        <option value="BK">BK</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="BD">BD</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Tugas</label>
+                    <select id="jenis" class="mt-1 py-2 block w-full border-gray-300 rounded-md shadow-sm">
+                        <option value="Kelompok">Kelompok</option>
+                        <option value="Individu">Individu</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="due" class="block text-sm font-medium text-gray-700">Deadline Tugas (dd-mm-yyyy)</label>
+                    <input type="date" id="due" class="mt-1 py-2 block w-full border-gray-300 rounded-md shadow-sm"
+                        onchange="formatDate()">
+                </div>
+                <div>
+                    <label for="detail" class="block text-sm font-medium text-gray-700">Detail Tugas</label>
+                    <textarea id="detail"
+                        class="mt-1 py-2 block w-full h-40 border-gray-300 rounded-md shadow-sm"></textarea>
+                </div>
+                <div>
+                    <label for="action_due" class="block text-sm font-medium text-gray-700">Apa yang harus dilakukan
+                        saat deadline tiba</label>
+                    <textarea id="action_due"
+                        class="mt-1 py-2 block w-full h-24 border-gray-300 rounded-md shadow-sm"></textarea>
+                </div>
+                <button type="button" onclick="generateDetail()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700">Generate</button>
+            </form>
+
+            <div id="output" class="mt-8 p-4 bg-gray-50 rounded-lg shadow-lg hidden">
+                <h2 class="text-lg font-bold mb-2">Teks Hasil Generasi</h2>
+                <pre id="outputText" class="whitespace-pre-wrap"></pre>
+                <button onclick="copyText()"
+                    class="bg-green-500 text-white px-4 py-2 mt-4 rounded-md shadow-md hover:bg-green-700">Copy
+                    Text</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
