@@ -39,18 +39,18 @@ function generateDetail() {
   } ${today.getFullYear()}`;
 
   const output = `
-  ====================
-   Tugas (${tanggalHariIni})
-   #TugasSekolah
-  ====================
-  Judul Tugas        : ${title}
-  Mata Pelajaran     : ${mapel}
-  Jenis Tugas        : ${jenis}
-  Deadline           : ${due}
-  Detail Tugas       : ${detail}
-  Minggu depan harus : ${action_due}
-  ====================
-  `;
+====================
+Tugas (${tanggalHariIni})
+#TugasSekolah
+====================
+Judul Tugas        : ${title}
+Mata Pelajaran     : ${mapel}
+Jenis Tugas        : ${jenis}
+Deadline           : ${due}
+Detail Tugas       : ${detail}
+Minggu depan harus : ${action_due}
+====================
+`;
 
   document.getElementById("outputText").textContent = output;
   document.getElementById("output").classList.remove("hidden");
@@ -87,14 +87,14 @@ function generateAnnouncement() {
   } ${today.getFullYear()}`;
 
   const ann_output = `
-  ====================
-   Pengumuman (${tanggalHariIni})
-   #InfoSekolah
-  ====================
-  Judul Pengumuman   : ${ann_title}
-  Detail Pengumuman  : ${ann_detail}
-  ====================
-  `;
+====================
+Pengumuman (${tanggalHariIni})
+#InfoSekolah
+====================
+Judul Pengumuman   : ${ann_title}
+Detail Pengumuman  : ${ann_detail}
+====================
+`;
 
   document.getElementById("ann_outputText").textContent = ann_output;
   document.getElementById("ann_output").classList.remove("hidden");
