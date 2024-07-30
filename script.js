@@ -39,17 +39,17 @@ function generateDetail() {
   } ${today.getFullYear()}`;
 
   const output = `
-====================
-Tugas (${tanggalHariIni})
-#TugasSekolah
-====================
+================================
+      Tugas (${tanggalHariIni})
+      #TugasSekolah
+================================
 Judul Tugas        : ${title}
 Mata Pelajaran     : ${mapel}
 Jenis Tugas        : ${jenis}
 Deadline           : ${due}
 Detail Tugas       : ${detail}
 Minggu depan harus : ${action_due}
-====================
+================================
 `;
 
   document.getElementById("outputText").textContent = output;
@@ -58,7 +58,8 @@ Minggu depan harus : ${action_due}
 
 function copyText() {
   const text = document.getElementById("outputText").textContent;
-  navigator.clipboard.writeText(text).then(() => {
+  const formattedText = `\`\`\`${text}\`\`\``; // Add triple backticks for WhatsApp code formatting
+  navigator.clipboard.writeText(formattedText).then(() => {
     alert("Text copied to clipboard");
   });
 }
@@ -87,13 +88,13 @@ function generateAnnouncement() {
   } ${today.getFullYear()}`;
 
   const ann_output = `
-====================
-Pengumuman (${tanggalHariIni})
-#InfoSekolah
-====================
+================================
+    Pengumuman (${tanggalHariIni})
+    #InfoSekolah
+================================
 Judul Pengumuman   : ${ann_title}
 Detail Pengumuman  : ${ann_detail}
-====================
+================================
 `;
 
   document.getElementById("ann_outputText").textContent = ann_output;
@@ -102,7 +103,8 @@ Detail Pengumuman  : ${ann_detail}
 
 function copyAnnouncementText() {
   const text = document.getElementById("ann_outputText").textContent;
-  navigator.clipboard.writeText(text).then(() => {
+  const formattedText = `\`\`\`${text}\`\`\``; // Add triple backticks for WhatsApp code formatting
+  navigator.clipboard.writeText(formattedText).then(() => {
     alert("Text copied to clipboard");
   });
 }
