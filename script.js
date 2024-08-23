@@ -48,7 +48,7 @@ Mata Pelajaran     : ${mapel}
 Jenis Tugas        : ${jenis}
 Deadline           : ${due}
 Detail Tugas       : ${detail}
-Minggu depan harus : ${action_due}
+Saat Deadline      : ${action_due}
 ===========================
 `;
 
